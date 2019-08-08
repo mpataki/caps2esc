@@ -6,6 +6,10 @@ For context, I use custom keyboards most of the time. I map capslock to control 
 - implement the control/esc behaviour described below in the original README, even on custom keyboards with control already mapped to the typical capslock position.
 - maps capslock to control for laptop keyboards
 
+The original readme follows:
+
+--------
+
 _Transforming the most useless key **ever** in the most useful one._
 <sub>_For vi/Vim/NeoVim addicts at least_.</sub>
 
