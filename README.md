@@ -1,5 +1,11 @@
 # caps2esc
 
+This is a clone from gitlab [here](https://gitlab.com/interception/linux/plugins/caps2esc), with some tweaks to make it more to my liking. Namely, to leave esc alone and just let this tool handle caps lock and control.
+
+For context, I use custom keyboards most of the time. I map capslock to control via the keyboard firmware as this works universally across Mac, Windows, and Linux. From there, something like this software level solution is required to achieve the control/esc behaviour that's brilliantly added by the linked repo. However, I still want this behaviour on a laptop keyboard, therefore, this software should do the following:
+- implement the control/esc behaviour described below in the original README, even on custom keyboards with control already mapped to the typical capslock position.
+- maps capslock to control for laptop keyboards
+
 _Transforming the most useless key **ever** in the most useful one._
 <sub>_For vi/Vim/NeoVim addicts at least_.</sub>
 
@@ -32,6 +38,11 @@ $ mkdir build
 $ cd build
 $ cmake ..
 $ make
+```
+
+To install:
+```
+$ make install
 ```
 
 ## Execution
