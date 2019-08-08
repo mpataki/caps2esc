@@ -33,7 +33,7 @@ void write_event(const struct input_event *event) {
 }
 
 int main(void) {
-    int capslock_is_down = 0, esc_give_up = 0;
+    int capslock_is_down = 0, esc_give_up = 0, control_is_down = 0;
     struct input_event input;
 
     setbuf(stdin, NULL), setbuf(stdout, NULL);
@@ -47,13 +47,17 @@ int main(void) {
             continue;
         }
 
-        if (capslock_is_down) {
+        if (capslock_is_down || control_is_down) {
             if (equal(&input, &capslock_down) ||
-                equal(&input, &capslock_repeat))
+                equal(&input, &capslock_repeat) ||
+                equal(&input, &ctrl_down) ||
+                equal(&input, &ctrl_repeat))
                 continue;
 
-            if (equal(&input, &capslock_up)) {
+            if (equal(&input, &capslock_up) ||
+                equal(&input, &ctrl_up)) {
                 capslock_is_down = 0;
+                control_is_down = 0;
                 if (esc_give_up) {
                     esc_give_up = 0;
                     write_event(&ctrl_up);
@@ -74,6 +78,9 @@ int main(void) {
             }
         } else if (equal(&input, &capslock_down)) {
             capslock_is_down = 1;
+            continue;
+        } else if (equal(&input, &ctrl_down)) {
+            control_is_down = 1;
             continue;
         }
 
